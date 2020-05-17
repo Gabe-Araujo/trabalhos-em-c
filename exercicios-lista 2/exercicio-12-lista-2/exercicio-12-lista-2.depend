@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1584478232 source:c:\users\pc-gabriel\desktop\exercicio-lista 2\exercicio-12-lista-2\main.c
+	<stdio.h>
+	<conio.h>
+	<locale.h>
+

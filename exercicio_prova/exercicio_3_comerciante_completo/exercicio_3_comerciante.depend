@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1588705380 source:c:\users\pc-gabriel\desktop\lista programação\exercicio_prova\exercicio_3_comerciante\main.c
+	<math.h>
+	<stdio.h>
+	<string.h>
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1586833135 source:c:\users\pc-gabriel\desktop\lista programação\exercicio-lista 5\exercicio_completo_lista_5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<locale.h>
+	<time.h>
+

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1586915447 source:c:\users\pc-gabriel\desktop\lista programação\exercicio-lista 6\exercicio_3_lista_6\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+

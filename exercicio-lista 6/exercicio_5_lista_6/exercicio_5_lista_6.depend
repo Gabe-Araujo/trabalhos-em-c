@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1587063631 source:c:\users\pc-gabriel\desktop\lista programação\exercicio-lista 6\exercicio_5_lista_6\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

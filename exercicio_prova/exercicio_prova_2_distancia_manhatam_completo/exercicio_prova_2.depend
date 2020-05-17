@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1587600374 source:c:\users\pc-gabriel\desktop\lista programação\exercicio_prova_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<time.h>
+
+1587600374 source:c:\users\pc-gabriel\desktop\lista programação\exercicio_prova\exercicio_prova_2_distancia_manhatam_completo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<time.h>
+

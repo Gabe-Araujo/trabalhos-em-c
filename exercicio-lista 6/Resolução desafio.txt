@@ -1,0 +1,192 @@
+ Isso é assim por causa da pilha.
+Quando você executar esse programa(misterio.exe) é criado uma pilha, e nela se vão armazenando todas as variáveis:
+vamos supor que seu programa fosse este:
+
+#include<stdio.h>
+
+void misterio1(int xval){
+    int x;
+    x = xval;
+}
+
+void misterio2(int nada){
+    int y;
+}
+
+int main(){
+	int a;
+	int b;
+	
+	
+	
+	
+	return 0;
+}
+
+Ao executar esse programa aconteceria o seguinte...
+main iria para a pilha e ficaria desta forma
+
+|            |
+|            |
+|            |
+|------------|
+| int b      | <-Obviamente b entrou encima de a porque foi declarada depois de a(pilha! Lembre!)
+| int a      | <-a entrou antes de b na pilha porque foi declarada primeiro(por isso se chama uma pilha)
+|----main----| <-inicio de main
+
+Mas isso ainda n explica o que você quer saber, só queria deixar constância de como vai parar na memória da pilha as variáveis.
+Agora vamos supor que vou chamar misterio1... Como ficaria na pilha?
+O programa seria esse:
+
+#include<stdio.h>
+
+void misterio1(int xval){ int x; x = xval; }
+void misterio2(int nada){ int y; }
+
+int main(){
+	int a;
+	int b;
+	misterio1(7);
+	return 0;
+}
+
+E na pilha ao momento de chamar misterio1 e passamos 7 ficaria assim:
+ 
+
+|             |
+| int x = xval|  <-...e depois entra as variaveis na ordem que foram sendo declaradas.              //ler quinto   essa linha
+| int xval=7  |  <-primeiro entra na pilha os parametros da função misterio1...                     //ler quarto   essa linha
+|--misterio1--|  <- ...isso quer dizer que misterio entra na pilha--------------------------------* //ler terceiro essa linha
+|             |                                                                                   | //ler segundo  essa linha
+| misterio(7) |  Chamada a misterio1 passando um 7(main faz uma parada e salta a misterio...)-----* //ler primeiro essa linha
+| int b       | 
+| int a       | 
+|----main-----| 
+
+ 
+
+O problema é que você esta achando que quando você chama o seu programa esta acontecendo isso:
+
+|             |
+| int y       |
+| int nada=15 |
+|--misterio2--|
+|             |
+| int x = xval|
+| int xval=7  |
+|--misterio1--|
+|             | 
+| misterio(7) |
+| int b       | 
+| int a       | 
+|----main-----| 
+
+mas na verdade quando uma função é invocada entra na memória esse função termina de fazer seu trabalho e sai da pilha então nunca chegamos a ter isso de acima pois ambas funções(misterio1 e 2) nunca chegam a estar juntas na memória. O que acontece é isso....
+
+1º Executamos ao programa e main vai para a pilha:
+
+| int b       | 
+| int a       | 
+|----main-----| 
+
+fazemos a chamada de mistério 1 passando 7. Mistério entra na pilha:
+
+|             |
+| int x = xval|
+| int xval=7  |
+|--misterio1--|
+|             | 
+| misterio(7) |
+| int b       | 
+| int a       | 
+|----main-----| 
+
+dai você imprime X
+
+| imprime(x)  | //printf("\n %d\n",x); 
+| int x = xval|
+| int xval=7  |
+|--misterio1--|
+|             | 
+| misterio(7) |
+| int b       | 
+| int a       | 
+|----main-----| 
+
+Depois disso a função sai da memória porem note em que parte da pilha está X porque aí justamente está o "misterio"
+ misteior1 sai da pilha
+
+|             |
+|misterio2(15)| 
+| misterio1(7)|
+| int b       | 
+| int a       | 
+|----main-----| 
+
+E note que agora invocou misterio2(15), porem misterio1 n existe mais agora pilha, é misterio2 quem vai entrar na pilha
+
+| imprime y   | printf..... blablabla y
+| int y       |
+| int nada=15 |
+|--misterio2--|
+|             |
+|misterio2(15)| 
+| misterio1(7)|
+| int b       | 
+| int a       | 
+|----main-----|
+
+Note onde caiu y!!! em cima onde estava x quando misterio1 estava na pilha. E adivinha o mistério....? na função misterio1 você fazia x = xval mas na misterio2 você n faz y = nada, então o que você tem em y é lixo! Esse é o mistério shueshueh você está imprimindo lixo HAHAAHH
+
+| imprime y   | 
+| int y       | <---aqui você tem lixo pois o x estava aqui antes!
+| int nada=15 |
+|--misterio2--|
+|             |
+|misterio2(15)| 
+| misterio1(7)|
+| int b       | 
+| int a       | 
+|----main-----| 
+
+
+Se você tivesse colocado algum valor nessa x ates de sair de misterio1 esse valor teria sid impresso. prove isso:
+
+ #include <stdio.h>
+#include <stdlib.h>
+
+void misterio1(int xval)
+    {
+    int x;
+    x = xval;
+    /* Imprima o endereço e valor de x aqui */
+    printf("\nvalor %d direcao %d\n", x,&x );
+
+    //mostra o valor que foi atribuido a X,como na função
+    //o valor de 7 e substituido pela variavel da função xval;
+    //e quando igualamos a variavel x o valor ira se tornar o mesmo da chamada/variavel xval que foi atribuido a 7;
+
+	x=9999;
+    }
+
+void misterio2(int nada)
+     {
+       int y;
+     /* Imprima o endereço e valor de y aqui */
+
+     printf("\nvalor %d direcao %d\n", y,&y );
+
+
+     }
+
+ int main()
+     {
+         misterio1(7);
+         misterio2(11);
+         return 0;
+     } 
+portanto lembre disso..
+
+Uma função só permanece na memória por enquanto esta funcionando(realizando algo) uma vez que terminou ela sai e retorna para o main na seguinte linha. A memória é liberada.
+
+se uma função sai da memória outra vai ocupar o lugar na pilha.

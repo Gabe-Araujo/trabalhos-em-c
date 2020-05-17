@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1589409744 source:c:\users\pc-gabriel\documents\exercicio_aula_11_05_struct\exercicio_1_lista_9\main.c
+	<stdio.h>
+	<conio.h>
+
+1589662661 source:c:\users\pc-gabriel\desktop\lista programação\exercicio-lista 9\exercicio_1_lista_9\main.c
+	<stdio.h>
+	<stdlib.h>
+

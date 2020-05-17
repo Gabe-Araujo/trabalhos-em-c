@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1588702794 source:c:\users\pc-gabriel\desktop\lista programação\exercicio_prova\exercicio_6_numero_k\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1588703663 source:c:\users\pc-gabriel\desktop\lista programação\exercicio_prova\exercicio_6_numero_k_completo\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1589509353 source:c:\users\pc-gabriel\desktop\lista programação\exercicio-lista 9\exercicio_7_lista_9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+
